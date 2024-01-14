@@ -50,21 +50,16 @@ const Search = ({
   const handleCurrentLocation: MouseEventHandler<HTMLAnchorElement> = (e) => {
     e.preventDefault();
 
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (e) => {
-          console.log(e);
-          const coords = `${e.coords.latitude},${e.coords.longitude}`;
-          setSearchValue(coords);
-          submitSearch(coords);
-        },
-        () => {
-          toast("Failed to get your location");
-        }
-      );
-    } else {
-      toast("Geolocation is not supported by this browser");
-    }
+    navigator.geolocation.getCurrentPosition(
+      (e) => {
+        const coords = `${e.coords.latitude},${e.coords.longitude}`;
+        setSearchValue(coords);
+        submitSearch(coords);
+      },
+      () => {
+        toast("Failed to get your location");
+      }
+    );
   };
 
   return (
@@ -80,10 +75,16 @@ const Search = ({
         <h1 className="text-center text-6xl font-bold">Weather App</h1>
 
         <p className="text-center">
-          Search for a location to view the weather or use your{" "}
-          <Link href="/" onClick={handleCurrentLocation}>
-            current location
-          </Link>
+          Search for a location to view the weather
+          {navigator.geolocation && (
+            <>
+              {" "}
+              or use your{" "}
+              <Link href="/" onClick={handleCurrentLocation}>
+                current location
+              </Link>
+            </>
+          )}
         </p>
         <form
           className={cn("max-w-[400px] flex gap-4", {
