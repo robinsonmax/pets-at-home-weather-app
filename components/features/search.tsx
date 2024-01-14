@@ -3,14 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
-const Search = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
+const Search = ({ defaultValue = "" }: { defaultValue?: string }) => {
+  const [searchValue, setSearchValue] = useState<string>(defaultValue);
+
+  const router = useRouter();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // TODO: Handle submit
-    console.log("Searching", searchValue);
+    router.push(`/${searchValue}`);
   };
 
   return (
