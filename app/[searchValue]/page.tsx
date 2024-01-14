@@ -13,7 +13,11 @@ export default async function Results({
       <Search defaultValue={params.searchValue} />
       <p>Error Message: {errorMessage}</p>
       <p>Results:</p>
-      <p>{JSON.stringify(data)}</p>
+      {data?.forecast.forecastday.map((day) => (
+        <p>
+          Day: {day.date} Temp: {day.day.avgtemp_c}
+        </p>
+      ))}
     </>
   );
 }

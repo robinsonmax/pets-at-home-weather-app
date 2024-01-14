@@ -1,3 +1,52 @@
+export const windDirections = [
+  "N",
+  "NNE",
+  "NE",
+  "ENE",
+  "E",
+  "ESE",
+  "SE",
+  "SSE",
+  "S",
+  "SSW",
+  "SW",
+  "WSW",
+  "W",
+  "WNW",
+  "NW",
+  "NNW",
+] as const;
+
+type WindDirection = (typeof windDirections)[number];
+
+type WeatherCondition = {
+  text: string;
+  icon: string;
+};
+
+type WeatherDataCurrent = {
+  temp_c: number;
+  humidity: number;
+  wind_mph: number;
+  wind_dir: WindDirection;
+  condition: WeatherCondition;
+};
+
+type WeatherDataForecastDay = {
+  date: string;
+  day: {
+    avgtemp_c: number;
+    condition: WeatherCondition;
+  };
+};
+
+type WeatherData = {
+  current: WeatherDataCurrent;
+  forecast: {
+    forecastday: WeatherDataForecastDay[];
+  };
+};
+
 export async function getWeatherData(searchValue: string) {
   const apiKey = process.env.WEATHER_API_KEY;
 
@@ -16,7 +65,7 @@ export async function getWeatherData(searchValue: string) {
     return { errorMessage: "Failed to call API. Bad Request." };
   }
 
-  const data = await req.json();
+  const data = (await req.json()) as WeatherData;
 
   return { data };
 }
