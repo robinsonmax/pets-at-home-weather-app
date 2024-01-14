@@ -1,0 +1,8 @@
+.background:before {
+  z-index: -99999;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("/background.svg");
+  opacity: 0.03;
+}

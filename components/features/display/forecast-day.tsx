@@ -11,7 +11,7 @@ const ForecastDay = ({
   }).format(date);
 
   return (
-    <div className="border rounded hover:shadow hover:-translate-y-px transition-all flex flex-col justify-center items-center h-32">
+    <div className="border rounded bg-background hover:shadow hover:-translate-y-px transition-all flex flex-col justify-center items-center h-32">
       <img
         width={32}
         height={32}
