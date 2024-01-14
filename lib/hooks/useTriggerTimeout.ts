@@ -15,7 +15,7 @@ const useTriggerTimeout = (duration: number): [() => void, boolean] => {
     const timeoutId = window.setTimeout(() => setEnabled(false), duration);
 
     return () => window.clearTimeout(timeoutId);
-  }, [enabled]);
+  }, [enabled, duration]);
 
   const triggerTimeout = () => setEnabled(true);
 

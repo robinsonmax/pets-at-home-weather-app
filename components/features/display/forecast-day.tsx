@@ -1,4 +1,5 @@
 import { WeatherDataForecastDay } from "@/lib/getWeatherData";
+import Image from 'next/image'
 
 const ForecastDay = ({
   weatherData,
@@ -12,7 +13,7 @@ const ForecastDay = ({
 
   return (
     <div className="border rounded bg-background hover:shadow hover:-translate-y-px transition-all flex flex-col justify-center items-center h-32">
-      <img
+      <Image
         width={32}
         height={32}
         src={`https:${weatherData.day.condition.icon}`}

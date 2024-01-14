@@ -6,7 +6,7 @@ import { toast } from "sonner";
 const DisplayToastOnLoad = ({ message }: { message: string }) => {
   useEffect(() => {
     toast(message);
-  }, []);
+  }, [message]);
   return null;
 };
 
