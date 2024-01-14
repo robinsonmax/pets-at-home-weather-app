@@ -28,8 +28,8 @@ const Search = ({ defaultValue = "" }: { defaultValue?: string }) => {
 
   return (
     <section className="flex flex-col items-center gap-6">
-      <h1 className="text-6xl font-bold">Weather App</h1>
-      <p>Search for a location to view the weather</p>
+      <h1 className="text-center text-6xl font-bold">Weather App</h1>
+      <p className="text-center">Search for a location to view the weather</p>
       <form
         className={cn("max-w-[400px] flex gap-4", {
           "animate-shake": isShaking,
