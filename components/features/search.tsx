@@ -73,7 +73,7 @@ const Search = ({
         className={cn(
           "flex flex-col items-center gap-6 transition-transform duration-500",
           {
-            "translate-y-[180px]": isFirstSearch,
+            "md:translate-y-[180px]": isFirstSearch,
           }
         )}
       >
@@ -101,9 +101,12 @@ const Search = ({
       </section>
       {animateSearch && (
         <div
-          className={cn("pointer-events-none -z-10 transition-opacity", {
-            "opacity-0": isFirstSearch,
-          })}
+          className={cn(
+            "hidden md:block pointer-events-none -z-10 transition-opacity",
+            {
+              "opacity-0": isFirstSearch,
+            }
+          )}
           aria-hidden
         >
           <DisplaySkeleton />
