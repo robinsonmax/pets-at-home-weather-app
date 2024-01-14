@@ -12,7 +12,7 @@ export default async function Results({
 
   return (
     <>
-      <Search defaultValue={params.searchValue} />
+      <Search defaultValue={decodeURI(params.searchValue)} />
       {errorMessage && <DisplayToastOnLoad message={errorMessage} />}
       {data && <Display weatherData={data} />}
     </>
