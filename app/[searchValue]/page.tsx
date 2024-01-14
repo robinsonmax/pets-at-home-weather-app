@@ -1,4 +1,5 @@
 import { Display } from "@/components/features/display";
+import { DisplayToastOnLoad } from "@/components/features/display-toast-on-load";
 import { Search } from "@/components/features/search";
 import { getWeatherData } from "@/lib/getWeatherData";
 
@@ -12,7 +13,7 @@ export default async function Results({
   return (
     <>
       <Search defaultValue={params.searchValue} />
-      <p>Error Message: {errorMessage}</p>
+      {errorMessage && <DisplayToastOnLoad message={errorMessage} />}
       {data && <Display weatherData={data} />}
     </>
   );

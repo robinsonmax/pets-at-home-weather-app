@@ -61,11 +61,14 @@ export async function getWeatherData(searchValue: string) {
     `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchValue}&days=7&aqi=no&alerts=no`
   );
 
+  const resp = await req.json();
+
   if (!req.ok) {
-    return { errorMessage: "Failed to call API. Bad Request." };
+    return {
+      errorMessage:
+        resp.error.message || "Failed to call the API. Bad Request.",
+    };
   }
 
-  const data = (await req.json()) as WeatherData;
-
-  return { data };
+  return { data: resp as WeatherData };
 }
