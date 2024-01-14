@@ -17,14 +17,14 @@ export const windDirections = [
   "NNW",
 ] as const;
 
-type WindDirection = (typeof windDirections)[number];
+export type WindDirection = (typeof windDirections)[number];
 
 type WeatherCondition = {
   text: string;
   icon: string;
 };
 
-type WeatherDataCurrent = {
+export type WeatherDataToday = {
   temp_c: number;
   humidity: number;
   wind_mph: number;
@@ -32,7 +32,7 @@ type WeatherDataCurrent = {
   condition: WeatherCondition;
 };
 
-type WeatherDataForecastDay = {
+export type WeatherDataForecastDay = {
   date: string;
   day: {
     avgtemp_c: number;
@@ -40,8 +40,8 @@ type WeatherDataForecastDay = {
   };
 };
 
-type WeatherData = {
-  current: WeatherDataCurrent;
+export type WeatherData = {
+  current: WeatherDataToday;
   forecast: {
     forecastday: WeatherDataForecastDay[];
   };
