@@ -6,7 +6,7 @@ const WindArrow = ({
   ...props
 }: { direction: WindDirection } & LucideProps) => {
   const windDirectionIndex = windDirections.findIndex((d) => d === direction);
-  const windDirection = 0.125 + windDirectionIndex / windDirections.length;
+  const windDirection = 0.625 + windDirectionIndex / windDirections.length;
 
   return (
     <MousePointer2
