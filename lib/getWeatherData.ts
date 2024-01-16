@@ -58,7 +58,8 @@ export async function getWeatherData(searchValue: string) {
   }
 
   const req = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchValue}&days=7&aqi=no&alerts=no`
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${searchValue}&days=7&aqi=no&alerts=no`,
+    { next: { revalidate: 3600 } }
   );
 
   const resp = await req.json();
